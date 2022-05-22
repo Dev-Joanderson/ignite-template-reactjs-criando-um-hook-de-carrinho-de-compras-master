@@ -70,15 +70,16 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const removeProduct = (productId: number) => {
     try {
-      const updateCart = [...cart];
-      const productIndex = updateCart.findIndex(
+      const updatedCart = [...cart];
+      const productIndex = updatedCart.findIndex(
         (product) => product.id === productId
       );
 
       if (productIndex >= 0) {
-        updateCart.splice(productIndex, 1);
-        setCart(updateCart);
-        localStorage.setItem("@RocketShoes:cart", JSON.stringify(updateCart));
+        updatedCart.splice(productIndex, 1);
+        setCart(updatedCart);
+
+        localStorage.setItem("@RocketShoes:cart", JSON.stringify(updatedCart));
       } else {
         throw Error();
       }
@@ -105,15 +106,15 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         return;
       }
 
-      const updateCart = [...cart];
-      const productExists = updateCart.find(
+      const updatedCart = [...cart];
+      const productExists = updatedCart.find(
         (product) => product.id === productId
       );
 
       if (productExists) {
         productExists.amount = amount;
-        setCart(updateCart);
-        localStorage.setItem("@RocketShoes:cart", JSON.stringify(updateCart));
+        setCart(updatedCart);
+        localStorage.setItem("@RocketShoes:cart", JSON.stringify(updatedCart));
       } else {
         throw Error();
       }
