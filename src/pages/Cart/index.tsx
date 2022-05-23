@@ -113,7 +113,7 @@ const Cart = (): JSX.Element => {
 
         <Total>
           <span>TOTAL</span>
-          <strong>{Total}</strong>
+          <strong>{total}</strong>
         </Total>
       </footer>
     </Container>
